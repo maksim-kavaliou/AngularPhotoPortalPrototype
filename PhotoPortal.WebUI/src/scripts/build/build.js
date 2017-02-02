@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -5064,34 +5064,126 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony default export */ var _unused_webpack_default_export = angular.module('PhotoAlbum', ['ui.router']);
+/* unused harmony export UserDataComponent */
+
+
+var UserDataComponent = {
+    templateUrl: 'src/view/components/user-data.html',
+    bindings: {
+        userInfo: '<'
+    }
+};
+
+angular.module('DataModule').component('userData', UserDataComponent);
+
+
 
 /***/ }),
 /* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export RoutesConfig */
 'use scrict';
-
-
 
 class RoutesConfig {
   constructor($stateProvider, $urlRouterProvider) {
     $stateProvider.state('home', {
       url: '/',
       templateUrl: 'src/view/routes/home.html'
+    }).state('userInfo', {
+      url: '/user/{userId}',
+      templateUrl: 'src/view/routes/user-data.html',
+      controller: 'UserDataController as userDataController',
+      resolve: {
+        userInfo: ['$stateParams', 'UserDataService', function ($stateParams, UserDataService) {
+          return UserDataService.getUserById($stateParams.userId);
+        }]
+      }
     });
 
     $urlRouterProvider.otherwise('/');
   }
 
 };
+
 RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 
 angular.module('PhotoAlbum').config(RoutesConfig);
 
+
+
 /***/ }),
 /* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export UserDataController */
+
+
+class UserDataController {
+  constructor(userInfo) {
+    this.userInfo = userInfo;
+  }
+};
+
+UserDataController.$inject = ['userInfo'];
+
+angular.module('DataModule').controller('UserDataController', UserDataController);
+
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony default export */ var _unused_webpack_default_export = angular.module('DataModule', []);
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony default export */ var _unused_webpack_default_export = angular.module('PhotoAlbum', ['ui.router', 'DataModule']);
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export UserDataService */
+
+
+class UserDataService {
+
+  constructor($http, ApiBasePath) {
+
+    this.$http = $http;
+    this.ApiBasePath = ApiBasePath;
+  }
+
+  getUserById(userId) {
+    var config = {};
+
+    if (userId) {
+      config.params = { id: userId };
+    }
+
+    return this.$http.get(this.ApiBasePath + '/user', config).then(function (result) {
+      return result.data;
+    });
+  }
+};
+
+UserDataService.$inject = ['$http', 'ApiBasePath'];
+
+angular.module('DataModule').service('UserDataService', UserDataService).constant('ApiBasePath', 'http://localhost:8056/api');
+
+
+
+/***/ }),
+/* 8 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5100,8 +5192,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__external_angular_min___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__external_angular_min__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__external_angular_ui_router_min__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__external_angular_ui_router_min___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__external_angular_ui_router_min__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_photo_album_module__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_routes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_photo_album_module__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_data_module__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__configs_routes_config__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__controllers_user_data_controller__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_user_data_service__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_user_data_component__ = __webpack_require__(2);
 
 
 // external
@@ -5112,7 +5208,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // angular module
 
 
+
 // config
+
+
+// controllers
+
+
+// services
+
+
+// components
 
 
 /***/ })

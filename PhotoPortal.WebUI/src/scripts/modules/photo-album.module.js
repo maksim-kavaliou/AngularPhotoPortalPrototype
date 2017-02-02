@@ -1,1 +1,1 @@
-export default angular.module('PhotoAlbum', ['ui.router']);
+export default angular.module('PhotoAlbum', ['ui.router', 'DataModule']);
