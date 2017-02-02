@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="PhotoAlbum">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="src/external/bootstrap/css/bootstrap.min.css"></link>
     <title>Photo Portal V1</title>
   </head>
   <body>
-    <h1>Protal</h1>
+    <div class="container">
+      <h1>Protal</h1>
+      <ui-view></ui-view>
+    </div>
+
+    <script src="src/scripts/build/build.js"></script>
   </body>
 </html>

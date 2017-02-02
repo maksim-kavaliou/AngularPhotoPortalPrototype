@@ -6,3 +6,4 @@ packages/*
 /PhotoPortal.Database/*.dbmdl
 /PhotoPortal.Database/*.jfm
 
+/PhotoPortal.WebUI/src/node_modules
