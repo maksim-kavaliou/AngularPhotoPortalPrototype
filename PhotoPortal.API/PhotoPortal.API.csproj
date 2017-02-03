@@ -191,6 +191,10 @@
       <Project>{98f296c7-c711-4e23-92b6-97c0b4eaa437}</Project>
       <Name>PhotoPortal.DomainEntities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PhotoPortal.Infrastructure\PhotoPortal.Infrastructure.csproj">
+      <Project>{a357671e-8d21-45ad-a88f-985641d1ecf2}</Project>
+      <Name>PhotoPortal.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PhotoPortal.Services\PhotoPortal.Services.csproj">
       <Project>{6bf425b1-a456-4ef8-9443-1d16450883a5}</Project>
       <Name>PhotoPortal.Services</Name>

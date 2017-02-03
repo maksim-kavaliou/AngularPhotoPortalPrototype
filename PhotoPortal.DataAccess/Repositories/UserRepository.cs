@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 using PhotoPortal.DataAccess.Interfaces.Repositories;
 using PhotoPortal.DataAccess.Repositories.Base;
 using PhotoPortal.DomainEntities.Entities;
+using PhotoPortal.Infrastructure.Interfaces;
 
 namespace PhotoPortal.DataAccess.Repositories
 {
-    public class UserRepository : BaseRepository, IUserRepository
+    public class UserRepository : EntityRepository<User>, IUserRepository
     {
-        public User Get(int id)
+        public UserRepository(IConfigurationManager configurationManager)
+            : base(configurationManager, "User")
         {
-            return new User { Id = 1, Name = "test" };
         }
     }
 }

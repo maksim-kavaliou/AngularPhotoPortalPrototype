@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using PhotoPortal.DomainEntities.Entities.Base;
+
 namespace PhotoPortal.DomainEntities.Entities
 {
-    public class User
+    public class User : BaseEntity
     {
         public int Id { get; set; }
 
