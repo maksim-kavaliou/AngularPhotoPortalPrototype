@@ -16,17 +16,16 @@ class UserDataService {
     }
 
     return this.$http
-      .get(this.ApiBasePath + '/user', config)
+      .get('/api/user', config)
       .then(function(result) {
           return result.data;
       });
   };
 };
 
-UserDataService.$inject = ['$http', 'ApiBasePath']
+UserDataService.$inject = ['$http']
 
 angular.module('DataModule')
-  .service('UserDataService', UserDataService)
-  .constant('ApiBasePath', 'http://localhost:8056/api');
+  .service('UserDataService', UserDataService);
 
 export {UserDataService};

@@ -9,8 +9,7 @@ class RoutesConfig {
       })
       .state('userInfo', {
         url: '/user/{userId}',
-        templateUrl: 'src/view/routes/user-data.html',
-        controller: 'UserDataController as userDataController',
+        component: 'userData',
         resolve: {
           userInfo :  ['$stateParams', 'UserDataService', function ($stateParams, UserDataService) {
             return UserDataService.getUserById($stateParams.userId);
