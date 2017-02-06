@@ -2,20 +2,36 @@
 
 class RoutesConfig {
   constructor ($stateProvider, $urlRouterProvider) {
+    var homeState = {
+      url: '/',
+      templateUrl: 'src/view/routes/home.html'
+    };
+
+    var userInfoState = {
+      url: '/user/{userId}',
+      component: 'userData',
+      resolve: {
+        userInfo :  ['$stateParams', 'UserDataService', function ($stateParams, UserDataService) {
+          return UserDataService.getUserById($stateParams.userId);
+        }]
+      }
+    }
+
+    var loginState = {
+      url: '/login',
+      component: 'login'
+    };
+
+    var registrationState = {
+      url: '/register',
+      component: 'registration'
+    };
+
     $stateProvider
-      .state('home', {
-        url: '/',
-        templateUrl: 'src/view/routes/home.html'
-      })
-      .state('userInfo', {
-        url: '/user/{userId}',
-        component: 'userData',
-        resolve: {
-          userInfo :  ['$stateParams', 'UserDataService', function ($stateParams, UserDataService) {
-            return UserDataService.getUserById($stateParams.userId);
-          }]
-        }
-      });
+      .state('home', homeState)
+      .state('userInfo', userInfoState)
+      .state('login', loginState)
+      .state('registration', registrationState);
 
       $urlRouterProvider.otherwise('/');
   }

@@ -33,6 +33,8 @@ namespace PhotoPortal.API
             // services
             container.RegisterType<IServiceFactory, ServiceFactory>();
             container.RegisterType<IUserService, UserService>();
+            container.RegisterType<IEncryptionService, EncryptionService>();
+            container.RegisterType<IAuthenticationService, AuthenticationService>();
 
             GlobalConfiguration.Configuration.DependencyResolver = new UnityDependencyResolver(container);
         }

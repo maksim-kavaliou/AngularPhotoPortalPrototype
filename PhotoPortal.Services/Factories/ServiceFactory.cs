@@ -17,13 +17,9 @@ namespace PhotoPortal.Services.Factories
             this.container = container;
         }
 
-        public IUserService UserService
-        {
-            get
-            {
-                return this.GetService<IUserService>().Value;
-            }
-        }
+        public IUserService UserService => this.GetService<IUserService>().Value;
+
+        public IEncryptionService EncryptionService => this.GetService<IEncryptionService>().Value;
 
         private Lazy<T> GetService<T>()
         {

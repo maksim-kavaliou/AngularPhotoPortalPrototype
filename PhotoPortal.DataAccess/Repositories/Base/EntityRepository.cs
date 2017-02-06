@@ -30,7 +30,7 @@ namespace PhotoPortal.DataAccess.Repositories.Base
             T result;
             using (var connection = new SqlConnection(this.ConnectionString))
             {
-                result = connection.Query<T>(string.Format("SELECT * FROM [dbo].[{0}] WHERE Id = @id", this.EntityName), new { id }).FirstOrDefault();
+                result = connection.Query<T>($"SELECT * FROM [dbo].[{this.EntityName}] WHERE Id = @id", new { id }).FirstOrDefault();
             }
 
             return result;

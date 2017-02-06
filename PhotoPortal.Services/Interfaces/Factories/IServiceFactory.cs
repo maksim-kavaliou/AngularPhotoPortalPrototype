@@ -11,5 +11,7 @@ namespace PhotoPortal.Services.Interfaces.Factories
     public interface IServiceFactory
     {
         IUserService UserService { get; }
+
+        IEncryptionService EncryptionService { get; }
     }
 }

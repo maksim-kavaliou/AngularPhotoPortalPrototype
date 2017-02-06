@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 using PhotoPortal.DomainEntities.Entities;
 
-namespace PhotoPortal.DataAccess.Interfaces.Repositories
+namespace PhotoPortal.Services.Interfaces.Services
 {
-    public interface IUserRepository
+    public interface IAuthenticationService
     {
-        User Get(int id);
-
-        void Create(User user);
-
         User Authenticate(string email, string password);
     }
 }
