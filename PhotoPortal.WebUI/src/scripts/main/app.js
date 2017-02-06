@@ -1,8 +1,8 @@
 'use strict';
 
 // external
-import angular from '../../external/angular.min';
-import UiRouter from '../../external/angular-ui-router.min';
+import angular from 'angular';
+import UiRouter from 'angular-ui-router';
 
 // // angular module
  import PhotoAlbumModule from '../modules/photo-album.module';
