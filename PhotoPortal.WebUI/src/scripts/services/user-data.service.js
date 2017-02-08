@@ -2,10 +2,9 @@
 
 class UserDataService {
 
-  constructor ($http, ApiBasePath){
+  constructor ($http){
 
     this.$http = $http;
-    this.ApiBasePath = ApiBasePath;
   }
 
   getUserById(userId) {

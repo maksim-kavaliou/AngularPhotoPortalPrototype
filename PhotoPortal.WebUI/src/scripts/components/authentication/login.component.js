@@ -1,10 +1,13 @@
 'use strict';
 
+import {LoginController} from '../../controllers/authentication/login.controller';
+
 var LoginComponent =  {
-    templateUrl: 'src/view/components/authentication/login.html',
-    bindings: {
-      userEmail: '=',
-      userPassword: '='
+  controller: LoginController,
+  templateUrl: 'src/view/components/authentication/login.html',
+  bindings: {
+    userEmail: '=',
+    userPassword: '='
   }
 };
 

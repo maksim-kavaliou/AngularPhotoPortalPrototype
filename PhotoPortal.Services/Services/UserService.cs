@@ -27,6 +27,12 @@ namespace PhotoPortal.Services.Services
             return this.Repository.Get(id);
         }
 
+        public User GetByEmail(string email)
+        {
+            return this.Repository.GetByEmail(email);
+        }
+
+
         public void Create(User user)
         {
             user.Password = Services.EncryptionService.EncryptUserCredantials(user.Email, user.Password);

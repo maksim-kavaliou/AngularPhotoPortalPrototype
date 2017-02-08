@@ -11,6 +11,7 @@ using PhotoPortal.Services.Interfaces.Factories;
 
 namespace PhotoPortal.API.Controllers
 {
+    [Authorize]
     public class UserController : BaseApiController
     {
         public UserController(IServiceFactory services)
@@ -23,6 +24,19 @@ namespace PhotoPortal.API.Controllers
         {
             var result = this.Services.UserService.Get(id);
             return result;
+        }
+
+        public User GetByEmail(string email)
+        {
+            var result = this.Services.UserService.GetByEmail(email);
+            return result;
+        }
+
+        public object CheckIfExist(string email)
+        {
+            var user = this.Services.UserService.GetByEmail(email.Trim().ToLowerInvariant());
+
+            return new { exist = user != null };
         }
     }
 }

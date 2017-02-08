@@ -27,10 +27,17 @@ namespace PhotoPortal.DataAccess.Repositories.Base
 
         public T Get(int id)
         {
-            T result;
+            return GetListByParameters(new string[] { "Id" }, new { Id = id }).FirstOrDefault();
+        }
+
+        public IList<T> GetListByParameters(IEnumerable<string> parametersList, object param, string parametersSeparator = "AND")
+        {
+            var parameters = string.Join($" {parametersSeparator} ", parametersList.Select(p => $"[{p}] = @{p}").ToList());
+
+            IList<T> result;
             using (var connection = new SqlConnection(this.ConnectionString))
             {
-                result = connection.Query<T>($"SELECT * FROM [dbo].[{this.EntityName}] WHERE Id = @id", new { id }).FirstOrDefault();
+                result = connection.Query<T>($"SELECT * FROM [dbo].[{this.EntityName}] WHERE {parameters}", param).ToList();
             }
 
             return result;

@@ -14,6 +14,8 @@ namespace PhotoPortal.DataAccess.Interfaces.Repositories
 
         void Create(User user);
 
+        User GetByEmail(string email);
+
         User Authenticate(string email, string password);
     }
 }

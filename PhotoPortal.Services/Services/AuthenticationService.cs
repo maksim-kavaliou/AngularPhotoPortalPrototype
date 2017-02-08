@@ -21,9 +21,11 @@ namespace PhotoPortal.Services.Services
 
         public User Authenticate(string email, string password)
         {
-            var encrypredPassword = Services.EncryptionService.EncryptUserCredantials(email, password);
+            var preparedEmail = email.Trim().ToLowerInvariant();
 
-            var user = Repositories.UserRepository.Authenticate(email, encrypredPassword);
+            var encrypredPassword = Services.EncryptionService.EncryptUserCredantials(preparedEmail, password);
+
+            var user = Repositories.UserRepository.Authenticate(preparedEmail, encrypredPassword);
 
             return user;
         }

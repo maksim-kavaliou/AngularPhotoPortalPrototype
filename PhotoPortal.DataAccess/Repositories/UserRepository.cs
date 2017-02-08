@@ -27,25 +27,20 @@ namespace PhotoPortal.DataAccess.Repositories
             {
                 connection.Execute(
                     @"
-                    INSER INTO [dbo].[User] ([Name], [Email], [Password])
+                    INSERT INTO [dbo].[User] ([Name], [Email], [Password])
                     VALUES(@Name, @Email, @Password)",
                     user);
             }
         }
 
+        public User GetByEmail(string email)
+        {
+            return GetListByParameters(new string[] { "Email" }, new { Email = email }).FirstOrDefault();
+        }
+
         public User Authenticate(string email, string password)
         {
-            User result;
-            using (var connection = new SqlConnection(this.ConnectionString))
-            {
-                result =
-                    connection.Query<User>(
-                            @"SELECT * FROM [dbo].[User] WHERE [Email] = @Email AND [Password] = @Password",
-                            new { Email = email, Password = password })
-                       .FirstOrDefault();
-            }
-
-            return result;
+            return GetListByParameters(new string[] { "Email", "Password" }, new { Email = email, Password = password }).FirstOrDefault();
         }
     }
 }

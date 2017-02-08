@@ -11,5 +11,9 @@ namespace PhotoPortal.Services.Interfaces.Services
     public interface IUserService
     {
         User Get(int id);
+
+        User GetByEmail(string email);
+
+        void Create(User user);
     }
 }

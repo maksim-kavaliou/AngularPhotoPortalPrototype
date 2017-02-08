@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Web.Http;
 
+using FluentValidation.WebApi;
+
 namespace PhotoPortal.API
 {
     public static class WebApiConfig
@@ -16,11 +18,25 @@ namespace PhotoPortal.API
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
+                name: "FullActionsPath",
+                routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional },
+                constraints: new { controller = @"Account" });
+
+            config.Routes.MapHttpRoute(
+                name: "UserFullActionsPath",
+                routeTemplate: "api/user/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional },
+                constraints: new { controller = @"User", action = @"(CheckIfExist|GetByEmail)" });
+
+            config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional });
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
+
+            FluentValidationModelValidatorProvider.Configure(config);
         }
     }
 }

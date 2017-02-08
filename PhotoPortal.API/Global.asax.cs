@@ -8,6 +8,8 @@ using System.Web.Routing;
 using System.Web.Security;
 using System.Web.SessionState;
 
+using FluentValidation.WebApi;
+
 namespace PhotoPortal.API
 {
     public class Global : HttpApplication

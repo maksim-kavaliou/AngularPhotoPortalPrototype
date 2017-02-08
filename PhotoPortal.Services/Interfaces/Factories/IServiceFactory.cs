@@ -13,5 +13,7 @@ namespace PhotoPortal.Services.Interfaces.Factories
         IUserService UserService { get; }
 
         IEncryptionService EncryptionService { get; }
+
+        IAuthenticationService AuthenticationService { get; }
     }
 }

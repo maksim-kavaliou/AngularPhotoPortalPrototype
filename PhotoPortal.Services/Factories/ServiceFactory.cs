@@ -21,6 +21,8 @@ namespace PhotoPortal.Services.Factories
 
         public IEncryptionService EncryptionService => this.GetService<IEncryptionService>().Value;
 
+        public IAuthenticationService AuthenticationService => this.GetService<IAuthenticationService>().Value;
+
         private Lazy<T> GetService<T>()
         {
             return new Lazy<T>(() => this.container.Resolve<T>());

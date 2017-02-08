@@ -13,7 +13,7 @@ namespace PhotoPortal.Services.Services
     {
         public string EncryptUserCredantials(string email, string password)
         {
-            var data = $"{email.Trim().ToLowerInvariant()}_{password.Trim().ToLowerInvariant()}";
+            var data = $"{email.Trim().ToLowerInvariant()}_{password}";
 
             return Encrypt(data);
         }

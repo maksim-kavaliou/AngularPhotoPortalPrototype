@@ -1,12 +1,15 @@
 'use strict';
 
+import {RegistrationController} from '../../controllers/authentication/registration.controller';
+
 var RegistrationComponent =  {
-    templateUrl: 'src/view/components/authentication/registration.html',
-    bindings: {
-      userName: '=',
-      userEmail: '=',
-      userPassword: '=',
-      userPasswordConfirm: '='
+  controller: RegistrationController,
+  templateUrl: 'src/view/components/authentication/registration.html',
+  bindings: {
+    userName: '=',
+    userEmail: '=',
+    userPassword: '=',
+    userPasswordConfirm: '='
   }
 };
 
