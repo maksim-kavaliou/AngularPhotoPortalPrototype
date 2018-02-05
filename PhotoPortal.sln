@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PhotoPortal.Database", "PhotoPortal.Database\PhotoPortal.Database.sqlproj", "{E41326D3-B50A-425A-95DE-C2F9501BFE9B}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoPortal.Infrastructure", "PhotoPortal.Infrastructure\PhotoPortal.Infrastructure.csproj", "{A357671E-8D21-45AD-A88F-985641D1ECF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoPortal.WebCore", "PhotoPortal.WebCore\PhotoPortal.WebCore.csproj", "{8C511DCC-B1D1-4BAA-9D49-0D5612C18776}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoPortal.Web", "PhotoPortal.Web\PhotoPortal.Web.csproj", "{4D6A7B50-10F1-4532-BEA4-DAA46ED98850}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,8 +55,15 @@ Global
 		{8C511DCC-B1D1-4BAA-9D49-0D5612C18776}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C511DCC-B1D1-4BAA-9D49-0D5612C18776}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C511DCC-B1D1-4BAA-9D49-0D5612C18776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D6A7B50-10F1-4532-BEA4-DAA46ED98850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D6A7B50-10F1-4532-BEA4-DAA46ED98850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D6A7B50-10F1-4532-BEA4-DAA46ED98850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D6A7B50-10F1-4532-BEA4-DAA46ED98850}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2965FF47-6C34-42DA-97AC-6324493E3587}
 	EndGlobalSection
 EndGlobal
