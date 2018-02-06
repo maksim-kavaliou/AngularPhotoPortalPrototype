@@ -1,7 +1,5 @@
 using System.Web.Http;
 
-using Microsoft.Practices.Unity;
-
 using PhotoPortal.DataAccess.Factories;
 using PhotoPortal.DataAccess.Interfaces.Factories;
 using PhotoPortal.DataAccess.Interfaces.Repositories;
@@ -14,6 +12,7 @@ using PhotoPortal.Services.Interfaces.Services;
 using PhotoPortal.Services.Services;
 
 using Unity.WebApi;
+using Unity;
 
 namespace PhotoPortal.API
 {

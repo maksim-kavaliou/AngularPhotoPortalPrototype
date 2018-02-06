@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using PhotoPortal.DataAccess.Interfaces.Repositories.Base;
 using PhotoPortal.DomainEntities.Entities;
 
 namespace PhotoPortal.DataAccess.Interfaces.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IEntityRepository<User>
     {
-        User Get(int id);
-
         void Create(User user);
 
         User GetByEmail(string email);

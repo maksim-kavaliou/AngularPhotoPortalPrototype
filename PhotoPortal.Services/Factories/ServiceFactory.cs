@@ -1,20 +1,17 @@
 ﻿using System;
-
-using Microsoft.Practices.Unity;
-
-using PhotoPortal.DataAccess.Interfaces.Repositories;
 using PhotoPortal.Services.Interfaces.Factories;
 using PhotoPortal.Services.Interfaces.Services;
+using Unity;
 
 namespace PhotoPortal.Services.Factories
 {
     public class ServiceFactory : IServiceFactory
     {
-        private readonly IUnityContainer container;
+        private readonly IUnityContainer _container;
 
         public ServiceFactory(IUnityContainer container)
         {
-            this.container = container;
+            this._container = container;
         }
 
         public IUserService UserService => this.GetService<IUserService>().Value;
@@ -25,7 +22,7 @@ namespace PhotoPortal.Services.Factories
 
         private Lazy<T> GetService<T>()
         {
-            return new Lazy<T>(() => this.container.Resolve<T>());
+            return new Lazy<T>(() => this._container.Resolve<T>());
         }
     }
 }

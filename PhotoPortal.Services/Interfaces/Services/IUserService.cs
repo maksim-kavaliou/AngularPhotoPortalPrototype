@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using PhotoPortal.DomainEntities.Entities;
+﻿using PhotoPortal.DomainEntities.Entities;
+using PhotoPortal.Services.Interfaces.Services.Base;
 
 namespace PhotoPortal.Services.Interfaces.Services
 {
-    public interface IUserService
+    public interface IUserService : IEntityService<User>
     {
-        User Get(int id);
-
         User GetByEmail(string email);
 
         void Create(User user);

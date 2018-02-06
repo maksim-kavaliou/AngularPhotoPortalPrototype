@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Dapper;
-
-using PhotoPortal.DomainEntities.Entities;
+using PhotoPortal.DataAccess.Interfaces.Repositories.Base;
 using PhotoPortal.DomainEntities.Entities.Base;
 using PhotoPortal.Infrastructure.Interfaces;
 
 namespace PhotoPortal.DataAccess.Repositories.Base
 {
-    public abstract class EntityRepository<T> : BaseRepository
+    public abstract class EntityRepository<T> : BaseRepository, IEntityRepository<T>
         where T : BaseEntity
     {
         protected readonly string EntityName;
@@ -30,14 +24,20 @@ namespace PhotoPortal.DataAccess.Repositories.Base
             return GetListByParameters(new string[] { "Id" }, new { Id = id }).FirstOrDefault();
         }
 
-        public IList<T> GetListByParameters(IEnumerable<string> parametersList, object param, string parametersSeparator = "AND")
+        public IList<T> GetListByParameters(IList<string> parametersList = null, object param = null, string parametersSeparator = "AND")
         {
-            var parameters = string.Join($" {parametersSeparator} ", parametersList.Select(p => $"[{p}] = @{p}").ToList());
+            var whereQuery = string.Empty;
+            if (parametersList != null && parametersList.Any())
+            {
+                var parameters = string.Join($" {parametersSeparator} ", parametersList.Select(p => $"[{p}] = @{p}").ToList());
+
+                whereQuery = $" WHERE {parameters}";
+            }
 
             IList<T> result;
             using (var connection = new SqlConnection(this.ConnectionString))
             {
-                result = connection.Query<T>($"SELECT * FROM [dbo].[{this.EntityName}] WHERE {parameters}", param).ToList();
+                result = connection.Query<T>($"SELECT * FROM [dbo].[{this.EntityName}] {whereQuery}", param ?? new {}).ToList();
             }
 
             return result;
