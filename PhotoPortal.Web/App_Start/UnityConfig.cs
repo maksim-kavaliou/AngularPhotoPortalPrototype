@@ -51,10 +51,12 @@ namespace PhotoPortal.Web
             // repositories
             container.RegisterType<IRepositoryFactory, RepositoryFactory>();
             container.RegisterType<IUserRepository, UserRepository>();
+            container.RegisterType<IPhotoRepository, PhotoRepository>();
 
             // services
             container.RegisterType<IServiceFactory, ServiceFactory>();
             container.RegisterType<IUserService, UserService>();
+            container.RegisterType<IPhotoService, PhotoService>();
             container.RegisterType<IEncryptionService, EncryptionService>();
             container.RegisterType<IAuthenticationService, AuthenticationService>();
 

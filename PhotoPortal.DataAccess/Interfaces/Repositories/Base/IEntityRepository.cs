@@ -9,5 +9,9 @@ namespace PhotoPortal.DataAccess.Interfaces.Repositories.Base
 
         IList<T> GetListByParameters(IList<string> parametersList = null, object param = null,
             string parametersSeparator = "AND");
+
+        int Create(T entity);
+
+        void Update(T entity);
     }
 }

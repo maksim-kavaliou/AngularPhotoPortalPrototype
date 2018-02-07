@@ -8,5 +8,7 @@ namespace PhotoPortal.DataAccess.Interfaces.Factories
         Lazy<T> GetRepository<T>();
 
         IUserRepository UserRepository { get; }
+
+        IPhotoRepository PhotoRepository { get; }
     }
 }

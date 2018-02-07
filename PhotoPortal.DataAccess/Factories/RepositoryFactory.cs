@@ -16,6 +16,8 @@ namespace PhotoPortal.DataAccess.Factories
 
         public IUserRepository UserRepository => this.GetRepository<IUserRepository>().Value;
 
+        public IPhotoRepository PhotoRepository => this.GetRepository<IPhotoRepository>().Value;
+
         public Lazy<T> GetRepository<T>()
         {
             return new Lazy<T>(() => this._container.Resolve<T>());

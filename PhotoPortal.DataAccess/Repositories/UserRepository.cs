@@ -21,18 +21,6 @@ namespace PhotoPortal.DataAccess.Repositories
         {
         }
 
-        public void Create(User user)
-        {
-            using (var connection = new SqlConnection(this.ConnectionString))
-            {
-                connection.Execute(
-                    @"
-                    INSERT INTO [dbo].[User] ([Name], [Email], [Password])
-                    VALUES(@Name, @Email, @Password)",
-                    user);
-            }
-        }
-
         public User GetByEmail(string email)
         {
             return GetListByParameters(new string[] { "Email" }, new { Email = email }).FirstOrDefault();

@@ -3,10 +3,7 @@ using PhotoPortal.DomainEntities.Entities;
 
 namespace PhotoPortal.DataAccess.Interfaces.Repositories
 {
-    public interface IUserRepository : IEntityRepository<User>
+    public interface IPhotoRepository : IEntityRepository<Photo>
     {
-        User GetByEmail(string email);
-
-        User Authenticate(string email, string password);
     }
 }

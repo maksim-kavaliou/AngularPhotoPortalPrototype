@@ -16,6 +16,8 @@ namespace PhotoPortal.Services.Factories
 
         public IUserService UserService => this.GetService<IUserService>().Value;
 
+        public IPhotoService PhotoService => this.GetService<IPhotoService>().Value;
+
         public IEncryptionService EncryptionService => this.GetService<IEncryptionService>().Value;
 
         public IAuthenticationService AuthenticationService => this.GetService<IAuthenticationService>().Value;
